@@ -13,5 +13,8 @@ class MainViewModel : ViewModel() {
     }
 
     fun viewState(): LiveData<MainViewState> = viewStateLiveData
+    fun add(title: String, text: String) {
+        NotesRepository.addNotes(title, text)
+    }
 
 }

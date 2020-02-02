@@ -22,16 +22,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         // livedata.observe(this, Observer { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() })
         rv_notes.layoutManager  = GridLayoutManager(this, 2)
         adapter = NoteRVAdapter()
         rv_notes.adapter = adapter
-
         viewModel.viewState().observe(this, Observer { it?.let { adapter.notes = it.notes } })
 
-
+        btn_add_notes.setOnClickListener { add() }
     }
-
+fun add(){
+    viewModel.add("test","получилось или нет")
+    viewModel.viewState().observe(this, Observer { it?.let { adapter.notes = it.notes } })
+}
     fun duStuff() {}
 
 }
