@@ -4,4 +4,14 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_note">#D81B60</color>
+
+
+   <color name="WHITE">#FFFFFF</color>
+    <color name="YELLOW">#FFFF00</color>
+    <color name="GREEN">#00FF00</color>
+    <color name="BLUE">#0000FF</color>
+    <color name="RED">#FF0000</color>
+    <color name="VIOLET">#7B1FA2</color>
+    <color name="PINK">#FF00FF</color>
+
 </resources>

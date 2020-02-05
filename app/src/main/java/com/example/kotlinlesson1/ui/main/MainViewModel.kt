@@ -1,4 +1,4 @@
-package com.example.kotlinlesson1
+package com.example.kotlinlesson1.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,12 +9,16 @@ class MainViewModel : ViewModel() {
     private val viewStateLiveData: MutableLiveData<MainViewState> = MutableLiveData()
 
     init {
-        viewStateLiveData.value = MainViewState(NotesRepository.getNotes())
+        NotesRepository.getNotes().observeForever {
+            viewStateLiveData.value =
+                viewStateLiveData.value?.copy(notes = it) ?: MainViewState(it)
+        }
+
     }
 
     fun viewState(): LiveData<MainViewState> = viewStateLiveData
     fun add(title: String, text: String) {
-        NotesRepository.addNotes(title, text)
+        //NotesRepository.addNotes(title, text)
     }
 
 }

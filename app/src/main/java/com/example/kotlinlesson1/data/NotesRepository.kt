@@ -1,14 +1,25 @@
 package com.example.kotlinlesson1.data
 
 import android.graphics.Color
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.kotlinlesson1.data.entity.Note
+import java.util.*
 
 object NotesRepository {
+    private val notesLiveData = MutableLiveData<List<Note>>()
     private val notes: MutableList<Note> = mutableListOf()
 
 
     init {
-        notes.add(Note("заметка 1", "какойто тект заметки",Color.YELLOW))
+        notes.add(
+            Note(
+                UUID.randomUUID().toString(),
+                "заметка 1",
+                "какойто тект заметки",
+                Note.Color.YELLOW
+            )
+        )
 //        notes = mutableListOf(
 //            Note("заметка 1", "какойто тект заметки",Color.LTGRAY),
 //            Note("заметка 2", "какойто тект заметки", Color.MAGENTA),
@@ -19,22 +30,35 @@ object NotesRepository {
 
     }
 
-
-    fun addNotes(title: String, text: String) {
-        notes.add(Note(title, text,Color.GREEN))
-        println("add notes")
+    init {
+        notesLiveData.value = notes
     }
 
-
-    fun editNotes(title: String, text: String,  id: Int) {
-        notes.set(id, (Note(title, text,Color.CYAN)))
+    fun saveNote(note: Note) {
+        addOrReplace(note)
+        notesLiveData.value = notes
     }
 
-    fun deleteNotes(id: Int) {
-        notes.removeAt(id)
+    fun addOrReplace(note: Note) {
+        for (i in notes.indices) {
+            if (notes[i] == note) {
+                notes[i] = note
+                return
+            }
+        }
+        notes.add(note)
     }
 
-    fun getNotes(): List<Note> {
-        return notes
+//    fun addNotes(title: String, text: String) {
+//        notes.add(Note(UUID.randomUUID().toString(), title, text, Note.Color.GREEN))
+//        println("add notes")
+//    }
+
+
+
+
+
+    fun getNotes(): LiveData<List<Note>> {
+        return notesLiveData
     }
 }
