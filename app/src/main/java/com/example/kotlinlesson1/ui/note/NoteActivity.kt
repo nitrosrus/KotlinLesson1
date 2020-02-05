@@ -86,7 +86,6 @@ class NoteActivity : AppCompatActivity() {
         et_title.addTextChangedListener(textChangeListener)
         et_body.addTextChangedListener(textChangeListener)
     }
-
     fun saveNote() {
         if (et_title.text == null || et_title.text!!.length < 3) return
 
@@ -101,10 +100,7 @@ class NoteActivity : AppCompatActivity() {
 
         }, SAVE_DELAY)
     }
-private fun saveBtn(){
 
-
-}
     private fun createNewNote(): Note =
         Note(UUID.randomUUID().toString(), et_title.text.toString(), et_body.text.toString())
 
