@@ -87,6 +87,7 @@ class NoteActivity : AppCompatActivity() {
         et_title.addTextChangedListener(textChangeListener)
         et_body.addTextChangedListener(textChangeListener)
     }
+
     fun saveNote() {
         if (et_title.text == null || et_title.text!!.length < 3) return
 
