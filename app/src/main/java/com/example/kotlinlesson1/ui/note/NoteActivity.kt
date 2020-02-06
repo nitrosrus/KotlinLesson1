@@ -70,6 +70,7 @@ class NoteActivity : AppCompatActivity() {
         note?.let { note ->
             et_title.setText(note.title)
             et_body.setText(note.text)
+
             val color = when (note.color) {
                 Note.Color.WHITE -> R.color.WHITE
                 Note.Color.YELLOW -> R.color.YELLOW
