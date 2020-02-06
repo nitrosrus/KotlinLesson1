@@ -62,7 +62,7 @@ class NoteActivity : AppCompatActivity() {
         } ?: let { "новая звметка" }
         initView()
 
-        btn_save.setOnClickListener {  }
+        btn_save.setOnClickListener { onBackPressed() }
     }
 
     fun initView() {
