@@ -5,9 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -37,7 +34,7 @@
                 android:id="@+id/et_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_note"/>
+                android:layout_margin="@dimen/margin_note" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +42,9 @@
             android:id="@+id/et_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_note"/>
+            android:layout_margin="@dimen/margin_note" />
+
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
@@ -54,6 +53,78 @@
             android:layout_margin="16dp"
             android:src="@drawable/ic_check_black_24dp"
             android:tint="@color/WHITE" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/WHITE"
+                android:text="NO"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/YELLOW"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/GREEN"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/BLUE"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/RED"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_violet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/VIOLET"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/PINK"
+                android:layout_marginLeft="@dimen/margin_note"
+                android:layout_marginRight="@dimen/margin_note"/>
+        </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>
