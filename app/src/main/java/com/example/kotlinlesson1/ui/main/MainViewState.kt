@@ -1,5 +1,6 @@
 package com.example.kotlinlesson1.ui.main
 
 import com.example.kotlinlesson1.data.entity.Note
+import com.example.kotlinlesson1.ui.base.BaseViewState
 
-data class MainViewState(val notes:List<Note>)
+class MainViewState(val notes: List<Note>? = null, error: Throwable? = null): BaseViewState<List<Note>?>(notes, error)

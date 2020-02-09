@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">KotlinLesson1</string>
     <string name="title_app">notes</string>
+    <string name="new_note_title">Новая заметка</string>
 
 
 </resources>
