@@ -7,6 +7,7 @@ import com.example.kotlinlesson1.data.model.NoteResult
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 
+
 class FireStoreProvider : RemoteDataProvider {
 
     companion object {
@@ -15,8 +16,6 @@ class FireStoreProvider : RemoteDataProvider {
 
     private val store: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
     private val noteReference = store.collection(NOTES_COLLECTION)
-
-
 
 
     override fun subsrcibeToAllNotes(): LiveData<NoteResult> {
@@ -37,6 +36,7 @@ class FireStoreProvider : RemoteDataProvider {
         return result
     }
 
+
     override fun getNoteById(id: String): LiveData<NoteResult> {
         val result = MutableLiveData<NoteResult>()
         noteReference.document(id).get()
@@ -48,6 +48,7 @@ class FireStoreProvider : RemoteDataProvider {
 
         return result
     }
+
 
     override fun saveNote(note: Note): LiveData<NoteResult> {
         val result = MutableLiveData<NoteResult>()
