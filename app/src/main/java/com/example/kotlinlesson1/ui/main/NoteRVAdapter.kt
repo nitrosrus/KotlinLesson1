@@ -52,7 +52,5 @@ class NoteRVAdapter(val onItemViewClick: ((Note) -> Unit)? = null) : RecyclerVie
         }
     }
 
-    interface Callback {
-        fun onItemClicked(note: Note)
-    }
+
 }

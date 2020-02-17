@@ -3,11 +3,9 @@ package com.example.kotlinlesson1.ui.note
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinlesson1.R
@@ -26,7 +24,7 @@ class NoteActivity : BaseActivity<Note?, NoteViewState>() {
         private const val SAVE_DELAY = 2000L
 
 
-        fun start(contex: Context, noteId: Note? = null) {
+        fun start(contex: Context, noteId: String? = null) {
             val intent = Intent(contex, NoteActivity::class.java)
             intent.putExtra(EXTRA_NOTE, noteId)
             contex.startActivity(intent)
@@ -46,7 +44,6 @@ class NoteActivity : BaseActivity<Note?, NoteViewState>() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
@@ -63,6 +60,19 @@ class NoteActivity : BaseActivity<Note?, NoteViewState>() {
 
         btn_save.setOnClickListener { onBackPressed() }
     }
+
+//    override fun onCreateContextMenu(
+//        menu: ContextMenu?,
+//        v: View?,
+//        menuInfo: ContextMenu.ContextMenuInfo?
+//    ) {
+//        super.onCreateContextMenu(menu, v, menuInfo)
+//    }
+//
+//    override fun onContextItemSelected(item: MenuItem): Boolean {
+//        return super.onContextItemSelected(item)
+//    }
+
 
 
     override fun renderData(data: Note?) {
