@@ -9,26 +9,20 @@ import com.example.kotlinlesson1.data.model.NoteResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
 
 
-class FireStoreProvider : RemoteDataProvider {
+class FireStoreProvider (private val firebaseAuth: FirebaseAuth, private val store: FirebaseFirestore): RemoteDataProvider {
 
     companion object {
         private const val NOTES_COLLECTION = "notes"
         private const val USER_COLLECTION = "users"
     }
 
-    private val store by lazy { FirebaseFirestore.getInstance() }
-
     private val currentUser
-        get() = FirebaseAuth.getInstance().currentUser
+        get() = firebaseAuth.currentUser
 
     private val userNotesCollection: CollectionReference
         get() = currentUser?.let {
-
-            //TODO: Я копипастил код с урока и заметил эту надпись :)
-
             store.collection(USER_COLLECTION).document(it.uid).collection(NOTES_COLLECTION)
         } ?: throw NoAuthException()
 
@@ -39,7 +33,7 @@ class FireStoreProvider : RemoteDataProvider {
         }
     }
 
-    override fun subsrcibeToAllNotes() = MutableLiveData<NoteResult>().apply {
+    override fun subscribeToAllNotes() = MutableLiveData<NoteResult>().apply {
         try {
             userNotesCollection.addSnapshotListener { snapshot, e ->
                 e?.let {
@@ -50,7 +44,7 @@ class FireStoreProvider : RemoteDataProvider {
                     }
                 }
             }
-        } catch (e: Throwable) {
+        } catch (e: Throwable){
             value = NoteResult.Error(e)
         }
     }
@@ -63,7 +57,7 @@ class FireStoreProvider : RemoteDataProvider {
                 }.addOnFailureListener {
                     value = NoteResult.Error(it)
                 }
-        } catch (e: Throwable) {
+        } catch (e: Throwable){
             value = NoteResult.Error(e)
         }
     }
@@ -76,7 +70,20 @@ class FireStoreProvider : RemoteDataProvider {
                 }.addOnFailureListener {
                     value = NoteResult.Error(it)
                 }
-        } catch (e: Throwable) {
+        } catch (e: Throwable){
+            value = NoteResult.Error(e)
+        }
+    }
+
+    override fun deleteNote(noteId: String): LiveData<NoteResult> =MutableLiveData<NoteResult>().apply {
+        try {
+            userNotesCollection.document(noteId).delete()
+                .addOnSuccessListener {
+                    value = NoteResult.Success(null)
+                }.addOnFailureListener {
+                    value = NoteResult.Error(it)
+                }
+        } catch (e: Throwable){
             value = NoteResult.Error(e)
         }
     }

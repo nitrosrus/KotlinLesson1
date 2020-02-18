@@ -4,11 +4,11 @@ import com.example.kotlinlesson1.data.NotesRepository
 import com.example.kotlinlesson1.data.errors.NoAuthException
 import com.example.kotlinlesson1.ui.base.BaseViewModel
 
-class SplashViewModel() : BaseViewModel<Boolean?, SplashViewState>() {
+class SplashViewModel(private val notesRepository: NotesRepository) :
+    BaseViewModel<Boolean?, SplashViewState>() {
 
     fun requestUser() {
-        NotesRepository.getCurrentUser().observeForever {
-            //TODO Я копипастил  и заметил эту надпись :)
+        notesRepository.getCurrentUser().observeForever {
             viewStateLiveData.value = it?.let {
                 SplashViewState(authenticated = true)
             } ?: let {
