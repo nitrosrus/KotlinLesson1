@@ -71,6 +71,7 @@ class NoteActivity : BaseActivity<NoteViewState.Data, NoteViewState>() {
             removeEditListener()
             if (et_title.text.toString() != note.title) et_title.setText(note.title)
             if (et_body.text.toString() != note.text) et_body.setText(note.text)
+            color=note.color
             toolbar.setBackgroundColor(note.color.getColorInt(this))
             supportActionBar?.title =
                 SimpleDateFormat(DATE_TIME_FORMAT, Locale.getDefault()).format(note.lastChanged)
