@@ -18,6 +18,7 @@ import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
+
 class MainActivity : BaseActivity<List<Note>?, MainViewState>() {
 
     companion object {
